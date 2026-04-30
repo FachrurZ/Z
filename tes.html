@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Toko Jaringan | Siswa SMK TKJ PKL</title>
+  <meta name="description" content="Website contoh SEO friendly yang dibuat oleh siswa SMK jurusan Teknik Komputer dan Jaringan (TKJ) saat menjalani PKL. Berisi artikel, layanan, dan produk seputar web development dan SEO.">
+  <meta name="keywords" content="SEO, website, contoh, HTML, VS Code">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Siswa SMK TKJ">
+  <meta name="language" content="id">
+  <meta property="og:title" content="Toko Jaringan">
+  <meta property="og:description" content="Website contoh SEO friendly dengan struktur HTML5, meta tags, dan schema markup.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tokojaringan.com">
+  <meta property="og:image" content="https://jaringan.com/images/seo.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Toko Jaringan",
+    "url": "https://.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://contoh-seo.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <style>
+    #keranjang-btn {
+    background: #1abc9c;
+    color: white;
+    padding: 6px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    transform: translateY(-30px);
+}
+
+#keranjang-btn:hover {
+    background: #16a085;
+}
+
+#keranjang-btn svg {
+    fill: white; /* Mengubah warna icon keranjang jadi putih agar terlihat */
+    margin-right: 5px;
+}
+
+/* Navigasi Utama */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Menu utama tetap di tengah */
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+/* Memaksa item terakhir (Keranjang) ke pojok kanan */
+nav ul li:last-child {
+    position: absolute;
+    right: 0;
+    margin-right: 0;
+
+}
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+   header { 
+  background: #2c3e50; 
+  color: white; 
+  padding: 20px; 
+  text-align: center;
+  position: sticky; /* Membuat header menempel saat scroll */
+  top: 0;           /* Menempel di bagian paling atas */
+  z-index: 1000;    /* Di bawah tombol keranjang sedikit */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+    nav ul { list-style: none; padding: 0; display: flex; justify-content: center; }
+    nav ul li { margin: 0 15px; }
+    nav ul li a { color: white; text-decoration: none; }
+    main { padding: 20px; }
+    footer { background: #2c3e50; color: white; text-align: center; padding: 10px; }
+    footer {
+  background: #2c3e50;
+  color: white;
+  padding: 50px 20px 20px 20px;
+  border-top: 5px solid #1abc9c;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap; /* Supaya kalau dibuka di HP, otomatis susun ke bawah */
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 30px;
+  text-align: left; /* Teks rata kiri agar lebih rapi */
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-column h3 {
+  color: #1abc9c;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.aksen-garis-footer {
+  width: 40px;
+  height: 3px;
+  background: #f39c12;
+  margin-bottom: 20px;
+}
+
+/* List Toko Online */
+.list-toko {
+  list-style: none;
+  padding: 0;
+}
+
+.list-toko li {
+  margin-bottom: 12px;
+}
+
+.list-toko a, .footer-column p a {
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.list-toko a:hover {
+  color: #1abc9c;
+  padding-left: 5px; 
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #3e4f5f;
+  font-size: 14px;
+  color: #bdc3c7;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 600px) {
+  header {
+    padding-top: 20px; /* Kembalikan padding normal karena tombol sudah di dalam menu */
+  }
+
+  nav ul {
+    flex-wrap: wrap; /* Supaya menu turun ke bawah jika layar terlalu sempit */
+    gap: 10px;
+  }
+
+  nav ul li {
+    margin: 5px 10px;
+  }
+
+  #keranjang-btn {
+    position: static; /* Mematikan posisi melayang */
+    width: auto;
+    transform: none;
+  }
+
+  /* Memperbaiki section tentang kami */
+  .kotak-teks-tentang {
+    width: 100% !important;
+    border-radius: 0 !important; /* Full width lebih rapi di HP */
+    padding: 20px !important;
+    border-left: none;
+    border-top: 10px solid #1abc9c;
+  }
+  /* Memastikan modal tidak terlalu mepet */
+  .modal-content {
+    width: 95%;
+    padding: 15px;
+  }
+
+  /* Mengatur gambar produk agar proporsional */
+  .produk-item img {
+    height: auto !important;
+    max-width: 150px;
+  }
+}
+    img { height: 300px; }
+    section { margin-bottom: 40px; }
+    /* Produk Section */
+    .produk-container {display: flex;flex-wrap: wrap;gap: 20px;}
+    .produk-item {flex: 1 1 calc(50% - 20px);background: #f9f9f9;padding: 15px;border-radius: 8px;text-decoration: none;color: inherit;display: flex;align-items: center;transition: transform 0.2s, box-shadow 0.2s;cursor: pointer;}
+    .produk-item:hover {transform: scale(1.02);box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
+    .produk-item img {max-width: 250px;margin-right: 20px;border-radius: 5px;}
+    .produk-info h3 { margin: 0; font-size: 18px; color: #2c3e50; }
+    .produk-info p { margin: 5px 0 0; font-size: 14px; color: #555; }
+    /* Modal */
+    .modal {display: none;position: fixed;top: 0; left: 0;width: 100%; height: 100%;background: rgba(0,0,0,0.5);justify-content: center;align-items: center;}
+    #modal-keranjang { z-index: 1000; } /* Lapisan Bawah */
+    #modal { z-index: 2000; }           /* Lapisan Tengah (Form/Edit) */
+    #modal-konfirmasi { z-index: 3000; } /* Lapisan Atas */
+    .modal-content {background: #fff;padding: 30px;border-radius: 10px;width: 80%;max-width: 500px;min-height: 200px;max-height: 90%;overflow-y: auto;}
+    .modal-content form {display: flex;flex-direction: column;gap: 15px;}
+    .modal-content input,.modal-content textarea,.modal-content button {padding: 12px;font-size: 16px;border-radius: 6px;border: 1px solid #ccc;}
+    .modal-content button {background: #2c3e50;color: #fff;border: none;cursor: pointer;transition: background 0.3s;}
+    .modal-content button:hover {background: #1abc9c;}
+    .close {float: right;cursor: pointer;font-weight: bold;}
+  /* 1. Memperbesar teks Produk Kami */
+#produk h2 {
+  font-size: 36px; /* Ukuran diperbesar */
+  border-bottom: 2px solid #2c3e50;
+  padding-bottom: 10px;
+}
+
+/* 2. Mengatur posisi teks agar berada di atas samping gambar */
+.produk-item {
+  align-items: flex-start; /* Mengubah dari center ke start agar konten mulai dari atas */
+  padding: 20px;
+}
+
+.produk-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Memastikan konten teks rapat ke atas */
+}
+
+.produk-info h3 {
+  font-size: 15px;
+  margin: 0 0 10px 0; /* Menghilangkan margin atas agar sejajar dengan atas gambar */
+  color: #2c3e50;
+}
+/* Pembungkus utama untuk membagi kiri dan kanan */
+.main-produk-wrapper {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Kolom kiri dan kanan masing-masing ambil 50% lebar */
+.kolom-produk {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 300px;
+}
+
+/* Penyesuaian agar item produk tampil memanjang ke samping (horizontal) */
+.produk-item {
+  display: flex;
+  flex-direction: row; /* Gambar di kiri, teks di kanan */
+  align-items: flex-start;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.produk-item img {
+  width: 120px; /* Ukuran gambar diperkecil agar pas */
+  height: auto;
+  margin-right: 15px;
+}
+.konten-pembungkus {
+  width: 100%;
+  max-width: 100%; /* Dibuat full width agar bisa benar-benar ke ujung */
+  margin: 0; 
+  display: flex;
+  justify-content: flex-end; /* Mendorong konten ke ujung kanan */
+  padding: 0; /* Menghilangkan jarak pinggir */
+}
+
+.kotak-teks-tentang {
+  background: rgba(255, 255, 255, 0.96); 
+  padding: 60px; 
+  border-radius: 20px 0 0 20px; 
+  width: 65%; 
+  max-width: 900px; 
+  box-shadow: -15px 15px 40px rgba(0,0,0,0.2);
+  border-left: 10px solid #1abc9c;
+  margin-right: 0; 
+}
+.tentang-kami-section {
+  position: relative;
+  width: 100%;
+  min-height: 400px; /* Tinggi area section */
+  
+  /* Memanggil gambar sebagai latar belakang */
+  background-image: url('tentang.webp'); 
+  
+  /* Pengaturan posisi gambar */
+  background-size: cover;       /* Gambar menutupi seluruh area section */
+  background-position: left;    /* Fokus gambar di kiri (supaya objek gambar tidak tertutup kotak) */
+  background-attachment: fixed; /* Efek parallax (gambar diam saat di-scroll) */
+  
+  display: flex;
+  align-items: center;          /* Kotak teks di tengah secara vertikal */
+  justify-content: flex-end;    /* Kotak teks didorong ke kanan */
+  overflow: hidden;
+}
+/* Penyesuaian untuk layar sangat lebar agar tidak terlalu kosong di kiri */
+@media (min-width: 1600px) {
+  .kotak-teks-tentang {
+    width: 50%;
+  }
+}
+.alamat-peta {
+  margin-top: 10px;      /* Memberi jarak dari peta */
+  font-size: 14px;       /* Ukuran tulisan sedikit kecil agar rapi */
+  color: #ecf0f1;        /* Warna teks putih keabuan agar mudah dibaca */
+  line-height: 1.5;      /* Jarak antar baris agar tidak rapat */
+}
+  </style>
+</head>
+<body>
+<header>
+  <h1>Toko Jaringan</h1>
+  <nav>
+    <ul>
+      <li><a href="#produk">Produk</a></li>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#artikel">Layanan</a></li>
+      <li><a href="#footer-kontak">Kontak</a></li>
+      <li><div id="keranjang-btn" onclick="openKeranjang()"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#1f1f1f"><path d="M213-117.21q-21-21.21-21-51T213.21-219q21.21-21 51-21T315-218.79q21 21.21 21 51T314.79-117q-21.21 21-51 21T213-117.21Zm432 0q-21-21.21-21-51T645.21-219q21.21-21 51-21T747-218.79q21 21.21 21 51T746.79-117q-21.21 21-51 21T645-117.21ZM253-696l83 192h301l82-192H253Zm-31-72h570q14 0 20.5 11t1.5 23L702.63-476.14Q694-456 676.5-444T637-432H317l-42 72h493v72H276q-43 0-63.5-36.15-20.5-36.16.5-71.85l52-90-131-306H48v-72h133l41 96Zm114 264h301-301Z"/></svg> </div></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+ <section id="artikel" class="artikel-background">
+    <div class="artikel-overlay">
+        <h2 class="judul-artikel">Solusi Infrastruktur Jaringan Terpercaya</h2>
+        <div class="garis-pembatas"></div>
+        
+        <p class="deskripsi-artikel">
+            Selamat datang di <strong>Toko Jaringan</strong>, penyedia perangkat network terlengkap untuk kebutuhan profesional maupun edukasi. 
+            Sebagai bagian dari kompetensi <em>Teknik Komputer dan Jaringan (TKJ)</em>, kami menghadirkan produk unggulan seperti 
+            <strong>Kabel UTP High-Speed</strong>, konektor RJ45 presisi, hingga peralatan teknisi seperti Tang Krimping dan LAN Tester.
+        </p>
+
+        <p class="deskripsi-artikel">
+            Kami berkomitmen memberikan material terbaik guna menjamin stabilitas transmisi data dan keamanan jaringan Anda. 
+            Dapatkan pengalaman membangun infrastruktur digital yang efisien dan handal bersama produk pilihan kami. 
+            Solusi tepat untuk instalasi kantor, rumah, hingga lab komputer sekolah.
+        </p>
+    </div>
+</section>
+
+<style>
+    /* Styling khusus untuk artikel dengan background */
+    .artikel-background {
+        position: relative;
+        width: 100%;
+        min-height: 450px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* Ganti 'contoh.jpg' dengan path gambar latar belakangmu */
+        background-image: url('contoh.jpg'); 
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed; /* Membuat efek parallax saat di-scroll */
+        margin-bottom: 50px;
+    }
+
+    /* Lapisan overlay agar teks tetap mudah dibaca */
+    .artikel-overlay {
+        background: rgba(255, 255, 255, 0.85); /* Warna putih transparan */
+        padding: 40px;
+        border-radius: 15px;
+        max-width: 800px;
+        text-align: center;
+        margin: 20px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .judul-artikel {
+        font-size: 32px;
+        color: #2c3e50;
+        margin-top: 0;
+    }
+
+    .garis-pembatas {
+        width: 60px;
+        height: 4px;
+        background: #1abc9c;
+        margin: 15px auto 25px auto;
+    }
+
+    .deskripsi-artikel {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #333;
+        margin-bottom: 20px;
+    }
+</style>
+
+  <section id="produk">
+  <h2 style="font-size: 40px; margin-bottom: 30px;">Produk Kami</h2>
+
+  <div class="main-produk-wrapper">
+    
+    <div class="kolom-produk" id="produk-lain">
+      
+      
+      <div class="produk-item" onclick="openModal('Lan Tester')">
+        <img src="lantes.png" alt="Produk A">
+        <div class="produk-info">
+          <h3>Digital LAN Tester RJ45 RJ11 – Alat Cek Koneksi Kabel Jaringan Network</h3>
+          <p>Jangan biarkan kabel rusak menghambat pekerjaan Anda. LAN Tester ini adalah alat wajib untuk menguji hasil crimping dan memastikan setiap pin pada kabel UTP/STP atau kabel telepon (RJ11) terhubung dengan benar.</p>
+          <p><strong>Harga: Rp150.000</strong></p>
+        </div>
+      </div>
+
+      <div class="produk-item" onclick="openModal('RJ45')">
+        <img src="rj45.png" alt="RJ45">
+        <div class="produk-info">
+          <h3>Konektor RJ45 – Kepala Kabel LAN Berkualitas High-Speed</h3>
+          <p>Dapatkan koneksi internet yang stabil dan tanpa gangguan dengan konektor RJ45 berkualitas tinggi. Dirancang presisi untuk pemasangan kabel LAN (UTP) yang mudah dan kuat.</p>
+          <p><strong>Harga: Rp2.000/Pcs</strong></p>
+        </div>
+      </div>
+
+      <div class="produk-item" onclick="openModal('Tang Krimping')">
+        <img src="tangkrimping.webp" alt="Produk C">
+        <div class="produk-info">
+          <h3>Tang Krimping RJ45/RJ11 Multifungsi – Alat Pasang Konektor Kabel LAN & Telepon</h3>
+          <p>Tang Krimping berkualitas tinggi untuk pemasangan konektor RJ45 (LAN) dan RJ11 (Telepon). Terbuat dari baja karbon kuat dengan pegangan ergonomis, menjamin hasil crimping presisi dan koneksi stabil.</p>
+          <p><strong>Harga: Rp130.000</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="kolom-produk" id="produk-lan">
+      
+      
+      <div class="produk-item" onclick="openModal('Kabel UTP')">
+        <img src="kabel utp.webp" alt="Kabel UTP">
+        <div class="produk-info">
+          <h3>Kabel UTP High-Speed – Kabel LAN Jaringan Internet</h3>
+          <p>Hadirkan transfer data cepat dan minim latency dengan Kabel UTP (Unshielded Twisted Pair). Cocok untuk instalasi jaringan kantor, rumah, hingga pemasangan CCTV. Mendukung kecepatan Gigabit untuk pengalaman browsing dan gaming yang lancar.</p>
+          <p><strong>Harga: Rp25.000/Meter</strong></p>
+        </div>
+      </div>
+
+      <div class="produk-item" onclick="openModal('Tang Potong')">
+        <img src="tangpotong.jpg" alt="Tang Potong">
+        <div class="produk-info">
+          <h3>Tang Potong Kabel Elektronik – Precision Side Cutter 5 Inch</h3>
+          <p>Permudah instalasi kabel jaringan dengan tang potong yang tajam dan presisi. Terbuat dari baja karbon berkualitas yang tahan lama dan ergonomis.</p>
+          <p><strong>Harga: Rp28.000</strong></p>
+        </div>
+      </div>
+
+      <div class="produk-item" onclick="openModal('Obeng Tespen')">
+        <img src="tespen.jpeg" alt="Obeng Tespen">
+        <div class="produk-info">
+          <h3>Tespen Listrik AC 100-500V – Obeng Tes Arus Listrik Aman & Akurat</h3>
+          <p>Deteksi aliran listrik dengan cepat dan aman menggunakan Tespen berkualitas. Dilengkapi dengan indikator lampu atau layar digital yang jelas untuk memastikan adanya tegangan pada stop kontak atau kabel yang terkelupas.</p>
+          <p><strong>Harga: Rp10.000</strong></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+ <section id="tentang" class="tentang-kami-section">
+  <div class="konten-pembungkus">
+    <div class="kotak-teks-tentang">
+      <h2 class="judul-tentang">Tentang Kami</h2>
+      <div class="aksen-garis"></div>
+      <p>
+        Kami adalah tim dari <strong>Siswa SMK Jurusan Teknik Komputer dan Jaringan (TKJ)</strong> yang berdedikasi tinggi dalam mendalami dunia teknologi informasi. Melalui program <em>Praktik Kerja Lapangan (PKL)</em>, kami tidak hanya belajar teori, tetapi terjun langsung dalam pengembangan website modern dan teknik optimasi SEO terkini.
+      </p>
+      <p>
+        Fokus utama kami adalah membangun infrastruktur digital yang efisien, mulai dari merapikan struktur kode HTML/CSS hingga memastikan website memiliki performa terbaik di mesin pencari. Kami percaya bahwa kombinasi antara keahlian teknis jaringan dan kemampuan pengembangan web adalah kunci sukses di era digital.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>Marketplace</h3>
+      <div class="aksen-garis-footer"></div>
+      <ul class="list-toko">
+        <li><a href="https://shopee.co.id">🛒 Shopee Official</a></li>
+        <li><a href="https://www.tokopedia.com/?utm_source=copilot.com">💚 Tokopedia Store</a></li>
+        <li><a href="https://www.tokopedia.com/?utm_source=copilot.com">🟥 Bukalapak</a></li>
+      </ul>
+    </div>
+
+   <div class="footer-column" id="footer-kontak">
+      <h3>Kontak</h3>
+      <div class="aksen-garis-footer"></div>
+      <ul class="list-toko"> 
+        <li><a href="mailto:fachrur@gmail.com">📧 Email: fachrur@gmail.com</a></li>
+        <li><a href="https://wa.me/6281288889999">📱 WhatsApp: +62 812-8888-9999</a></li>
+        <li><a href="https://maps.google.com/?q=Monas" target="_blank">📍 Lokasi: Jl. Silang Monas, Jakarta</a></li>
+      </ul>
+  </ul>
+</div>
+
+    <div class="footer-column">
+  <h3>Lokasi Kami</h3>
+  <div class="aksen-garis-footer"></div>
+  <div class="map-container">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.66642715433!2d106.8249641!3d-6.1753924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2e764b12d%3A0x3d2ad23d0411d7!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1715600000000!5m2!1sid!2sid" 
+      width="100%" 
+      height="150" 
+      style="border:0; border-radius: 8px;" 
+      allowfullscreen="" 
+      loading="lazy">
+    </iframe>
+  </div>
+<p class="alamat-peta">
+    📍 Jl. Silang Monas, Gambir, Jakarta Pusat, DKI Jakarta 10110
+  </p>
+</div>
+
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 Toko Jaringan | Siswa SMK TKJ PKL</p>
+  </div>
+</footer>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="modal-title">Form Pemesanan</h2>
+    <form id="orderForm">
+      <input type="hidden" id="edit_index" value="-1">
+      
+      <label>Nama Produk</label>
+      <input type="text" id="produk_input" name="produk" readonly>
+
+      <label>Nama Lengkap</label>
+      <input type="text" name="nama" required>
+
+      <label>Email </label>
+      <input type="email" name="email" id="email_input" required>
+
+      <label>Alamat</label>
+      <textarea name="alamat" required></textarea>
+
+      <label>Jumlah</label>
+      <input type="number" name="jumlah" min="1" value="1">
+
+      <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <button type="button" id="btn-simpan" onclick="prosesPesanan('simpan')" style="background: #f39c12; flex: 1;">Simpan</button>
+        <button type="button" id="btn-langsung" onclick="prosesPesanan('kirim')" style="background: #27ae60; flex: 1;">Beli Langsung</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="modal-keranjang" class="modal">
+  <div class="modal-content" style="max-width: 700px;">
+    <span class="close" onclick="closeKeranjang()">&times;</span>
+    <h2>Keranjang Pesanan</h2>
+    <div style="display: flex; gap: 20px;">
+      <div style="flex: 1; border-right: 1px solid #ddd; padding-right: 10px;">
+        <h3>📦 Disimpan</h3>
+        <div id="daftar-disimpan"></div>
+      </div>
+      <div style="flex: 1; padding-left: 10px;">
+        <h3>🚚 Dikirim</h3>
+        <div id="daftar-dikirim"></div>
+      </div>
+    </div>
+    <button onclick="checkoutKeranjang()" style="margin-top: 20px; width: 100%;">Checkout Keranjang</button>
+  </div>
+</div>
+
+<script>
+  let keranjangDisimpan = [];
+  let daftarDikirim = [];
+
+  function openModal(produk) {
+    document.getElementById('modal-title').innerText = "Form Pemesanan";
+    document.getElementById('edit_index').value = "-1"; // Reset status edit
+    document.getElementById('produk_input').value = produk;
+    document.getElementById('btn-langsung').style.display = "block"; // Munculkan tombol beli
+    document.getElementById('modal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+    document.querySelector('#orderForm').reset();
+  }
+
+  function prosesPesanan(tipe) {
+    const form = document.querySelector('#orderForm');
+    const email = document.getElementById('email_input').value;
+    const editIndex = parseInt(document.getElementById('edit_index').value);
+
+    // Validasi Email menggunakan Regex sederhana
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      alert("Format email salah! Harus menggunakan '@' dan domain (contoh: user@mail.com)");
+      return;
+    }
+
+    if (!form.nama.value || !form.alamat.value) {
+      alert("Harap isi Nama dan Alamat!");
+      return;
+    }
+
+    const dataBaru = {
+      produk: form.produk.value,
+      nama: form.nama.value,
+      email: email,
+      alamat: form.alamat.value,
+      jumlah: form.jumlah.value,
+      status: 'Dikemas' // Status awal
+    };
+
+    if (editIndex > -1) {
+      // Jika sedang mode edit
+      keranjangDisimpan[editIndex] = dataBaru;
+      alert("Data berhasil diperbarui!");
+    } else {
+      // Jika pesanan baru
+      if (tipe === 'simpan') {
+        keranjangDisimpan.push(dataBaru);
+        alert("Berhasil disimpan ke keranjang!");
+      } else {
+        daftarDikirim.push(dataBaru);
+        document.getElementById('produk_pesan').textContent = dataBaru.produk;
+        document.getElementById('nama_pemesan').textContent = dataBaru.nama;
+        document.getElementById('modal-konfirmasi').style.display = 'flex';
+      }
+    }
+
+    closeModal();
+    renderKeranjang();
+  }
+
+  // Fungsi mengedit item di bagian 'Disimpan'
+  function editItem(index) {
+    const item = keranjangDisimpan[index];
+    document.getElementById('modal-title').innerText = "Edit Pesanan";
+    document.getElementById('edit_index').value = index;
+    
+    const form = document.querySelector('#orderForm');
+    form.produk.value = item.produk;
+    form.nama.value = item.nama;
+    form.email.value = item.email;
+    form.alamat.value = item.alamat;
+    form.jumlah.value = item.jumlah;
+
+    document.getElementById('btn-langsung').style.display = "none"; // Sembunyikan tombol beli saat edit
+    document.getElementById('modal').style.display = 'flex';
+  }
+
+  // Fungsi mengubah status di bagian 'Dikirim'
+  function gantiStatus(index) {
+    const tahapan = ['Dikemas', 'Dikirim', 'Diterima'];
+    let currentIdx = tahapan.indexOf(daftarDikirim[index].status);
+    let nextIdx = (currentIdx + 1) % tahapan.length;
+    daftarDikirim[index].status = tahapan[nextIdx];
+    renderKeranjang();
+  }
+
+  function renderKeranjang() {
+    const containerSimpan = document.getElementById('daftar-disimpan');
+    const containerKirim = document.getElementById('daftar-dikirim');
+
+    // Render Disimpan
+    containerSimpan.innerHTML = keranjangDisimpan.length === 0 ? "<p>Kosong</p>" : "";
+    keranjangDisimpan.forEach((item, index) => {
+      containerSimpan.innerHTML += `
+        <div style="background:#eee; padding:10px; margin-bottom:5px; border-radius:5px; font-size:12px;">
+          <strong>${item.produk}</strong> (${item.jumlah})<br>
+          <button onclick="editItem(${index})" style="background:#3498db; color:white; border:none; padding:2px 8px; cursor:pointer; margin-top:5px; border-radius:3px;">Edit Data</button>
+        </div>`;
+    });
+
+    // Render Dikirim
+    containerKirim.innerHTML = daftarDikirim.length === 0 ? "<p>Kosong</p>" : "";
+    daftarDikirim.forEach((item, index) => {
+      let color = item.status === 'Diterima' ? '#27ae60' : '#e67e22';
+      containerKirim.innerHTML += `
+        <div onclick="gantiStatus(${index})" style="background:#f9f9f9; border-left:4px solid ${color}; padding:10px; margin-bottom:5px; cursor:pointer; font-size:12px;">
+          <strong>${item.produk}</strong><br>
+          Status: <span style="color:${color}; font-weight:bold;">${item.status}</span>
+        </div>`;
+    });
+  }
+
+  function checkoutKeranjang() {
+    if (keranjangDisimpan.length === 0) return alert("Keranjang kosong!");
+    daftarDikirim = [...daftarDikirim, ...keranjangDisimpan];
+    keranjangDisimpan = [];
+    alert("Pesanan dikirim!");
+    renderKeranjang();
+    closeKeranjang();
+  }
+
+  function openKeranjang() {
+    document.getElementById('modal-keranjang').style.display = 'flex';
+    renderKeranjang();
+  }
+  function closeKeranjang() { document.getElementById('modal-keranjang').style.display = 'none'; }
+  function closeKonfirmasi() { document.getElementById('modal-konfirmasi').style.display = 'none'; }
+</script>
+<div id="modal-detail" class="modal">
+  <div class="modal-content" style="max-width: 500px; text-align: center;">
+    <span class="close" onclick="closeModalDetail()">×</span>
+    <img id="detail-img" src="" alt="Produk" style="width: 100%; max-height: 250px; object-fit: contain; margin-bottom: 15px;">
+    <h2 id="detail-title"></h2>
+    <p id="detail-desc" style="text-align: left; color: #666; font-size: 14px;"></p>
+    <p id="detail-price" style="font-weight: bold; color: #1abc9c; font-size: 20px;"></p>
+    
+    <div style="display: flex; gap: 10px; margin-top: 20px;">
+      <button onclick="tambahKeKeranjangCepat()" style="background: #f39c12; flex: 1;">🛒 + Keranjang</button>
+      <button onclick="bukaFormPemesanan()" style="background: #27ae60; flex: 1;">⚡ Pesan Sekarang</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">×</span>
+    <h2 id="modal-title">Form Pemesanan</h2>
+    <form id="orderForm">
+      <input type="hidden" id="edit_index" value="-1">
+      <label>Nama Produk</label>
+      <input type="text" id="produk_input" readonly>
+      <label>Nama Lengkap</label>
+      <input type="text" id="nama_pembeli" required>
+      <label>Alamat</label>
+      <textarea id="alamat_pembeli" required></textarea>
+      <button type="button" onclick="prosesPesanan('kirim')" style="background: #2c3e50; color: white;">Kirim Pesanan</button>
+    </form>
+  </div>
+</div>
+
+<div id="modal-konfirmasi" class="modal">
+  <div class="modal-content" style="text-align: center;">
+    <span class="close" onclick="closeKonfirmasi()">×</span>
+    <h2 style="color: #27ae60;"> Pesanan Berhasil!</h2>
+    <p>Terima kasih, <strong id="nama_pemesan"></strong>!</p>
+    <p>Pesanan untuk <strong id="produk_pesan"></strong> telah kami terima dan sedang diproses.</p>
+    <button onclick="closeKonfirmasi()" style="background: #27ae60; color: white; width: 100%;">Tutup</button>
+  </div>
+</div>
+
+</body>
+</html>
