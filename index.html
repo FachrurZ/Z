@@ -41,7 +41,7 @@
     align-items: center;
     justify-content: center;
     transition: 0.3s;
-    transform: translateY(-10px);
+    transform: translateY(-5px);
 }
 
 #keranjang-btn:hover {
@@ -59,19 +59,18 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center; /* Menu utama tetap di tengah */
+    justify-content: center; 
     align-items: center;
-    position: relative;
     width: 100%;
+    flex-wrap: wrap; /* Izinkan menu turun ke bawah jika ruang tidak cukup */
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 10px 15px; /* Memberi jarak antar menu agar tidak rapat */
 }
 
 /* Memaksa item terakhir (Keranjang) ke pojok kanan */
 nav ul li:last-child {
-    position: absolute;
     right: 0;
     margin-right: 0;
 
@@ -157,26 +156,28 @@ nav ul li:last-child {
   color: #bdc3c7;
 }
 
-/* Responsif untuk layar kecil */
 @media (max-width: 600px) {
-  header {
-    padding-top: 20px; /* Kembalikan padding normal karena tombol sudah di dalam menu */
-  }
+    header {
+        padding: 15px 10px;
+    }
 
-  nav ul {
-    flex-wrap: wrap; /* Supaya menu turun ke bawah jika layar terlalu sempit */
-    gap: 10px;
-  }
+    nav ul {
+        flex-direction: row; /* Tetap sejajar atau ubah ke column jika ingin vertikal */
+        justify-content: center;
+        gap: 5px;
+    }
 
-  nav ul li {
-    margin: 5px 10px;
-  }
+    nav ul li {
+        margin: 5px; /* Memperkecil margin di HP agar muat satu baris */
+    }
 
-  #keranjang-btn {
-    position: static; /* Mematikan posisi melayang */
-    width: auto;
-    transform: none;
-  }
+    #keranjang-btn {
+        position: static;
+        transform: none; /* Menghilangkan efek melayang di mobile agar sejajar teks */
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
 
   /* Memperbaiki section tentang kami */
   .kotak-teks-tentang {
